@@ -2,7 +2,7 @@ PHP Nagios plugin for sending customizable email notifications, with graphs gene
 Relies on PHPMailer for sending emails.
 
 ## Installation
-Process composer dependencies
+Process composer dependencies or manually install PHPMailer
 
 Add nagios commands:
 ```
