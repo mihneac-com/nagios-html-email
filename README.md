@@ -10,8 +10,8 @@ define command {
 }
 
 define command {
-        command_name                    notify-service-by-email
-        command_line                    /usr/bin/printf "%b" "***** Nagios *****\n\nNotification Type: $NOTIFICATIONTYPE$\n\nService: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nState: $SERVICESTATE$\n\nDate/Time: $LONGDATETIME$\n\nAdditional Info:\n\n$SERVICEOUTPUT$\n" | /usr/bin/mail -s "** $NOTIFICATIONTYPE$ Service Alert: $HOSTALIAS$/$SERVICEDESC$ is $SERVICESTATE$ **" $CONTACTEMAIL$
+        command_name                    notify-service-by-html-email
+        command_line                    $USER1$/php_mail_notif/service-mail.php "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTSTATE$" "$HOSTADDRESS$" "$SERVICEOUTPUT$" "$SHORTDATETIME$" "$SERVICEDESC$" "$SERVICESTATE$" "$CONTACTEMAIL$" "$SERVICEDURATIONSEC$" "$SERVICEEXECUTIONTIME$" "$TOTALSERVICESWARNING$" "$TOTALSERVICESCRITICAL$" "$TOTALSERVICESUNKNOWN$" "$NOTIFICATIONRECIPIENTS$" "$TOTALSERVICESOK$" "$SERVICENOTIFICATIONNUMBER$" "$SERVICEACKCOMMENT$" "$HOSTGROUPNAME$" "$SERVICEPERFDATA$" "$SERVICEDURATION$" "$NOTIFICATIONAUTHOR$" "$NOTIFICATIONCOMMENT$" "$LONGDATETIME$" "$HOSTPERFDATA$">> $USER1$/mail.log 2>&1
         register                        1
 }
 ```
